@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>{% block title %}WoW{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+        <link rel="stylesheet" href="./templates/default.css">
+
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+            <div class="container">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#toggleNavbar">&#9776;</button>
+                <div class="collapse navbar-toggleable-xs" id="toggleNavbar">
+                    <a class="navbar-brand" href="./">Mon WoW</a>
+                    <ul class="nav navbar-nav">
+                        {% if guilds is not empty %}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" type="button" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mes guildes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="myGuilds">
+                                {% for guild, realm in guilds if realm is not empty %}
+                                <a class="dropdown-item" href="./guild.php?realm={{ realm|url_encode }}&amp;name={{ guild|url_encode }}">{{ guild }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% if battleTag is defined %}
+                        <li class="nav-item dropdown pull-xs-right">
+                            <a href="#" class="nav-link dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ (battleTag is defined) ? battleTag }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="account">
+                                <a class="dropdown-item" href="./logout.php">Déconnexion</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="main" class="container">
+
+            {% block content %}{% endblock %}
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+    </body>
+</html>

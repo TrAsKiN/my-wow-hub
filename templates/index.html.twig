@@ -1,0 +1,17 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Hey ! Salut à toi !</h1>
+    <p class="lead">En te connectant avec ton compte <strong>Battle.net</strong>, tu aura accès à la liste de tes personnages ! Mais ne t'inquiète pas, je n'enregistre aucune de tes données.</p>
+    <hr class="m-y-md">
+    <p>
+        <a class="btn btn-primary btn-lg" href="{{ url }}" role="button">Connecter mon compte Battle.net</a><br>
+        <small class="text-muted"><em>En cliquant sur le lien, tu va être redirigé vers le site <strong>Battle.net</strong> où tu pourra autoriser mon application.</em></small>
+    </p>
+</div>
+
+{% endblock %}

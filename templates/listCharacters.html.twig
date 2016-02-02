@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Mes personnages - {{ parent() }}{% endblock %}
+
+{% block content %}
+
+<h1>Mes personnages</h1>
+<hr>
+<p>Voici la liste des personnages de ton compte regroupés par royaume.</p>
+
+{% set oldRealm = {} %}
+{% for realm in characters %}
+{% set actualRealm = realm.realm %}
+{% if actualRealm not in oldRealm %}
+
+<h2>{{ actualRealm }}</h2>
+<div class="row">
+
+    {% for character in characters if character.realm == actualRealm %}
+    {% include 'character.html.twig' with {'character': character} %}
+    {% endfor %}
+
+</div>
+
+{% endif %}
+{% set oldRealm = oldRealm|merge([actualRealm]) %}
+{% endfor %}
+
+{% endblock %}

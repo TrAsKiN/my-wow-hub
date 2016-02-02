@@ -1,0 +1,171 @@
+body{
+    background-color: #D3D3D3;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#main{
+    margin-top: 54px;
+}
+
+.card{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #333;
+    opacity: .95;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    transition-property: opacity, box-shadow;
+    transition-duration: .1s;
+    border: 0;
+}
+.card:hover{
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+}
+
+.card .card-block .card-text{
+    background: linear-gradient(to right, rgba(0, 0, 0, .0), rgba(0, 0, 0, .9) 5%, rgba(0, 0, 0, .0));
+    padding-left: 10px;
+}
+
+h1.display-1 small a{
+    color: #777;
+    font-size: 60%;
+}
+
+#character{
+    width: 740px;
+    height: 550px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .6);
+    padding: 0;
+}
+#character .items{
+    min-height: 49px;
+    padding: 3px;
+    background: linear-gradient(to right, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
+    padding-left: 15px;
+    border-radius: 3px;
+}
+#character .items.text-xs-right{
+    background: linear-gradient(to left, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
+    padding-right: 15px;
+}
+#character .items a{
+    display: inline-block;
+    width: 49px;
+    height: 49px;
+    margin: 3px 0;
+    position: relative;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .6);
+    border-radius: 3px;
+    float: left;
+    z-index: 5;
+}
+#character .items.text-xs-right a{
+    float: right;
+}
+#character .items a:hover{
+    border-color: rgba(255, 255, 255, .3);
+}
+#character .items a img{
+    margin: 1px;
+    width: 47px;
+    height: 47px;
+}
+#character .items .q{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 49px;
+    height: 49px;
+    background-image: url(../images/inventory-slots.png);
+    opacity: .8;
+}
+#character .items .q:hover{
+    opacity: .9;
+}
+#character .items .name{
+    font-size: 75%;
+    padding: 4px 0 0 70px;
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 1);
+    z-index: 1;
+}
+#character .items.text-xs-right .name{
+    padding: 4px 70px 0 0;
+    right: 0;
+}
+#character .items#mainHand{
+    padding-right: 5px;
+}
+#character .items#offHand{
+    padding-left: 5px;
+}
+#character .items#mainHand .name{
+    padding: 4px 60px 0 0;
+}
+#character .items#offHand .name{
+    padding: 4px 0 0 60px;
+}
+#character .items .empty{
+    margin: 3px 0;
+    width: 49px;
+    height: 49px;
+    position: relative;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .6);
+    border-radius: 3px;
+}
+#character .items.text-xs-right .empty{
+    float: right;
+}
+#character .items .empty .q0{
+    margin: 1px;
+    width: 47px;
+    height: 47px;
+    background-image: url(../images/item-empty-bg.png);
+}
+
+#head .q0{background-position: 0 0;}
+#neck .q0{background-position: 0 -47px;}
+#shoulder .q0{background-position: 0 -94px;}
+#back .q0{background-position: 0 -141px;}
+#chest .q0{background-position: 0 -141px;}
+#shirt .q0{background-position: 0 -235px;}
+#tabard .q0{background-position: 0 -188px;}
+#wrist .q0{background-position: 0 -282px;}
+#hands .q0{background-position: 0 -329px;}
+#waist .q0{background-position: 0 -376px;}
+#legs .q0{background-position: 0 -423px;}
+#feet .q0{background-position: 0 -470px;}
+#finger1 .q0{background-position: 0 -517px;}
+#finger2 .q0{background-position: 0 -517px;}
+#trinket1 .q0{background-position: 0 -564px;}
+#trinket2 .q0{background-position: 0 -564px;}
+#mainHand .q0{background-position: 0 -611px;}
+#offHand .q0{background-position: 0 -658px;}
+
+.q0{color: #9d9d9d;}
+.q1{color: #ffffff;}
+.q2{color: #1eff00;}
+.q3{color: #0070dd;}
+.q4{color: #a335ee;}
+.q5{color: #ff8000;}
+.q6{color: #e5cc80;}
+.q7{color: #e5cc80;}
+
+.q0 .q{background-position: -49px 0;}
+.q1 .q{background-position: -98px 0;}
+.q2 .q{background-position: -147px 0;}
+.q3 .q{background-position: -196px 0;}
+.q4 .q{background-position: -245px 0;}
+.q5 .q{background-position: -294px 0;}
+.q6 .q{background-position: -343px 0;}
+.q7 .q{background-position: -392px 0;}
