@@ -15,7 +15,7 @@ if ($authorized) {
     $options[CURLOPT_CUSTOMREQUEST] = 'GET';
     $options[CURLOPT_URL] = API_URL .'/wow/user/characters?'. http_build_query(array(
         'access_token'  => $_COOKIE['access_token'],
-        'locale'        => 'fr_FR'
+        'locale'        => LOCALE
     ));
 
     $wow = curl_init();

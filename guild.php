@@ -23,7 +23,7 @@ if (!empty($_GET['name']) || !empty($_GET['realm'])) {
 $options[CURLOPT_CUSTOMREQUEST] = 'GET';
 $options[CURLOPT_URL] = API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode($guildName) .'?'. http_build_query(array(
     'apikey' => CLIENT_ID,
-    'locale' => 'fr_FR',
+    'locale' => LOCALE,
     'fields' => 'members'
 ));
 
