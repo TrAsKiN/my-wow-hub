@@ -2,6 +2,8 @@
 
 A simple WoW Hub in PHP using **Battle.net API**.
 
+View a demonstration on my website : http://wow.traskin.net/
+
 ## Installation
 
 Install [Composer](https://getcomposer.org/) to automate the installation and update components.
