@@ -10,10 +10,7 @@
 <div class="container img-rounded" id="character" style="background-image:url('http://eu.battle.net/static-render/eu/{{ character.cover }}');">
     <div id="head" class="col-sm-6 items">
         {% if character.items.head is defined %}
-        <a href="#" rel="item={{ character.items.head.id }};lvl={{ character.level }};upgd={{ character.items.head.tooltipParams.upgrade.current }};bonus={{ character.items.head.bonusLists|join(':') }};ench={{ character.items.head.tooltipParams.enchant }};domain=fr" class="q{{ character.items.head.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.head.icon }}.jpg" alt="{{ character.items.head.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.head} %}
         <span class="name q{{ character.items.head.quality }}">{{ character.items.head.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -22,10 +19,7 @@
     <div id="hands" class="col-sm-6 items text-xs-right">
         {% if character.items.hands is defined %}
         <span class="name q{{ character.items.hands.quality }}">{{ character.items.hands.name }}</span>
-        <a href="#" rel="item={{ character.items.hands.id }};lvl={{ character.level }};upgd={{ character.items.hands.tooltipParams.upgrade.current }};bonus={{ character.items.hands.bonusLists|join(':') }};ench={{ character.items.hands.tooltipParams.enchant }};domain=fr" class="q{{ character.items.hands.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.hands.icon }}.jpg" alt="{{ character.items.hands.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.hands} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -33,10 +27,7 @@
     <div class="clearfix"></div>
     <div id="neck" class="col-sm-6 items">
         {% if character.items.neck is defined %}
-        <a href="#" rel="item={{ character.items.neck.id }};lvl={{ character.level }};upgd={{ character.items.neck.tooltipParams.upgrade.current }};bonus={{ character.items.neck.bonusLists|join(':') }};ench={{ character.items.neck.tooltipParams.enchant }};domain=fr" class="q{{ character.items.neck.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.neck.icon }}.jpg" alt="{{ character.items.neck.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.neck} %}
         <span class="name q{{ character.items.neck.quality }}">{{ character.items.neck.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -45,10 +36,7 @@
     <div id="waist" class="col-sm-6 items text-xs-right">
         {% if character.items.waist is defined %}
         <span class="name q{{ character.items.waist.quality }}">{{ character.items.waist.name }}</span>
-        <a href="#" rel="item={{ character.items.waist.id }};lvl={{ character.level }};upgd={{ character.items.waist.tooltipParams.upgrade.current }};bonus={{ character.items.waist.bonusLists|join(':') }};ench={{ character.items.waist.tooltipParams.enchant }};domain=fr" class="q{{ character.items.waist.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.waist.icon }}.jpg" alt="{{ character.items.waist.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.waist} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -56,10 +44,7 @@
     <div class="clearfix"></div>
     <div id="shoulder" class="col-sm-6 items">
         {% if character.items.shoulder is defined %}
-        <a href="#" rel="item={{ character.items.shoulder.id }};lvl={{ character.level }};upgd={{ character.items.shoulder.tooltipParams.upgrade.current }};bonus={{ character.items.shoulder.bonusLists|join(':') }};ench={{ character.items.shoulder.tooltipParams.enchant }};domain=fr" class="q{{ character.items.shoulder.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.shoulder.icon }}.jpg" alt="{{ character.items.shoulder.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.shoulder} %}
         <span class="name q{{ character.items.shoulder.quality }}">{{ character.items.shoulder.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -68,10 +53,7 @@
     <div id="legs" class="col-sm-6 items text-xs-right">
         {% if character.items.legs is defined %}
         <span class="name q{{ character.items.legs.quality }}">{{ character.items.legs.name }}</span>
-        <a href="#" rel="item={{ character.items.legs.id }};lvl={{ character.level }};upgd={{ character.items.legs.tooltipParams.upgrade.current }};bonus={{ character.items.legs.bonusLists|join(':') }};ench={{ character.items.legs.tooltipParams.enchant }};domain=fr" class="q{{ character.items.legs.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.legs.icon }}.jpg" alt="{{ character.items.legs.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.legs} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -79,10 +61,7 @@
     <div class="clearfix"></div>
     <div id="back" class="col-sm-6 items">
         {% if character.items.back is defined %}
-        <a href="#" rel="item={{ character.items.back.id }};lvl={{ character.level }};upgd={{ character.items.back.tooltipParams.upgrade.current }};bonus={{ character.items.back.bonusLists|join(':') }};ench={{ character.items.back.tooltipParams.enchant }};domain=fr" class="q{{ character.items.back.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.back.icon }}.jpg" alt="{{ character.items.back.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.back} %}
         <span class="name q{{ character.items.back.quality }}">{{ character.items.back.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -91,10 +70,7 @@
     <div id="feet" class="col-sm-6 items text-xs-right">
         {% if character.items.feet is defined %}
         <span class="name q{{ character.items.feet.quality }}">{{ character.items.feet.name }}</span>
-        <a href="#" rel="item={{ character.items.feet.id }};lvl={{ character.level }};upgd={{ character.items.feet.tooltipParams.upgrade.current }};bonus={{ character.items.feet.bonusLists|join(':') }};ench={{ character.items.feet.tooltipParams.enchant }};domain=fr" class="q{{ character.items.feet.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.feet.icon }}.jpg" alt="{{ character.items.feet.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.feet} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -102,10 +78,7 @@
     <div class="clearfix"></div>
     <div id="chest" class="col-sm-6 items">
         {% if character.items.chest is defined %}
-        <a href="#" rel="item={{ character.items.chest.id }};lvl={{ character.level }};upgd={{ character.items.chest.tooltipParams.upgrade.current }};bonus={{ character.items.chest.bonusLists|join(':') }};ench={{ character.items.chest.tooltipParams.enchant }};domain=fr" class="q{{ character.items.chest.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.chest.icon }}.jpg" alt="{{ character.items.chest.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.chest} %}
         <span class="name q{{ character.items.chest.quality }}">{{ character.items.chest.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -114,10 +87,7 @@
     <div id="finger1" class="col-sm-6 items text-xs-right">
         {% if character.items.finger1 is defined %}
         <span class="name q{{ character.items.finger1.quality }}">{{ character.items.finger1.name }}</span>
-        <a href="#" rel="item={{ character.items.finger1.id }};lvl={{ character.level }};upgd={{ character.items.finger1.tooltipParams.upgrade.current }};bonus={{ character.items.finger1.bonusLists|join(':') }};ench={{ character.items.finger1.tooltipParams.enchant }};domain=fr" class="q{{ character.items.finger1.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.finger1.icon }}.jpg" alt="{{ character.items.finger1.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.finger1} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -125,10 +95,7 @@
     <div class="clearfix"></div>
     <div id="shirt" class="col-sm-6 items">
         {% if character.items.shirt is defined %}
-        <a href="#" rel="item={{ character.items.shirt.id }};lvl={{ character.level }};upgd={{ character.items.shirt.tooltipParams.upgrade.current }};bonus={{ character.items.shirt.bonusLists|join(':') }};ench={{ character.items.shirt.tooltipParams.enchant }};domain=fr" class="q{{ character.items.shirt.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.shirt.icon }}.jpg" alt="{{ character.items.shirt.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.shirt} %}
         <span class="name q{{ character.items.shirt.quality }}">{{ character.items.shirt.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -137,10 +104,7 @@
     <div id="finger2" class="col-sm-6 items text-xs-right">
         {% if character.items.finger2 is defined %}
         <span class="name q{{ character.items.finger2.quality }}">{{ character.items.finger2.name }}</span>
-        <a href="#" rel="item={{ character.items.finger2.id }};lvl={{ character.level }};upgd={{ character.items.finger2.tooltipParams.upgrade.current }};bonus={{ character.items.finger2.bonusLists|join(':') }};ench={{ character.items.finger2.tooltipParams.enchant }};domain=fr" class="q{{ character.items.finger2.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.finger2.icon }}.jpg" alt="{{ character.items.finger2.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.finger2} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -148,10 +112,7 @@
     <div class="clearfix"></div>
     <div id="tabard" class="col-sm-6 items">
         {% if character.items.tabard is defined %}
-        <a href="#" rel="item={{ character.items.tabard.id }};lvl={{ character.level }};upgd={{ character.items.tabard.tooltipParams.upgrade.current }};bonus={{ character.items.tabard.bonusLists|join(':') }};ench={{ character.items.tabard.tooltipParams.enchant }};domain=fr" class="q{{ character.items.tabard.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.tabard.icon }}.jpg" alt="{{ character.items.tabard.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.tabard} %}
         <span class="name q{{ character.items.tabard.quality }}">{{ character.items.tabard.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -160,10 +121,7 @@
     <div id="trinket1" class="col-sm-6 items text-xs-right">
         {% if character.items.trinket1 is defined %}
         <span class="name q{{ character.items.trinket1.quality }}">{{ character.items.trinket1.name }}</span>
-        <a href="#" rel="item={{ character.items.trinket1.id }};lvl={{ character.level }};upgd={{ character.items.trinket1.tooltipParams.upgrade.current }};bonus={{ character.items.trinket1.bonusLists|join(':') }};ench={{ character.items.trinket1.tooltipParams.enchant }};domain=fr" class="q{{ character.items.trinket1.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.trinket1.icon }}.jpg" alt="{{ character.items.trinket1.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.trinket1} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -171,10 +129,7 @@
     <div class="clearfix"></div>
     <div id="wrist" class="col-sm-6 items">
         {% if character.items.wrist is defined %}
-        <a href="#" rel="item={{ character.items.wrist.id }};lvl={{ character.level }};upgd={{ character.items.wrist.tooltipParams.upgrade.current }};bonus={{ character.items.wrist.bonusLists|join(':') }};ench={{ character.items.wrist.tooltipParams.enchant }};domain=fr" class="q{{ character.items.wrist.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.wrist.icon }}.jpg" alt="{{ character.items.wrist.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.wrist} %}
         <span class="name q{{ character.items.wrist.quality }}">{{ character.items.wrist.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -183,10 +138,7 @@
     <div id="trinket2" class="col-sm-6 items text-xs-right">
         {% if character.items.trinket2 is defined %}
         <span class="name q{{ character.items.trinket2.quality }}">{{ character.items.trinket2.name }}</span>
-        <a href="#" rel="item={{ character.items.trinket2.id }};lvl={{ character.level }};upgd={{ character.items.trinket2.tooltipParams.upgrade.current }};bonus={{ character.items.trinket2.bonusLists|join(':') }};ench={{ character.items.trinket2.tooltipParams.enchant }};domain=fr" class="q{{ character.items.trinket2.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.trinket2.icon }}.jpg" alt="{{ character.items.trinket2.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.trinket2} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -195,20 +147,14 @@
     <div id="mainHand" class="col-sm-6 items text-xs-right">
         {% if character.items.mainHand is defined %}
         <span class="name q{{ character.items.mainHand.quality }}">{{ character.items.mainHand.name }}</span>
-        <a href="#" rel="item={{ character.items.mainHand.id }};lvl={{ character.level }};upgd={{ character.items.mainHand.tooltipParams.upgrade.current }};bonus={{ character.items.mainHand.bonusLists|join(':') }};ench={{ character.items.mainHand.tooltipParams.enchant }};domain=fr" class="q{{ character.items.mainHand.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.mainHand.icon }}.jpg" alt="{{ character.items.mainHand.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.mainHand} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
     </div>
     <div id="offHand" class="col-sm-6 items">
         {% if character.items.offHand is defined %}
-        <a href="#" rel="item={{ character.items.offHand.id }};lvl={{ character.level }};upgd={{ character.items.offHand.tooltipParams.upgrade.current }};bonus={{ character.items.offHand.bonusLists|join(':') }};ench={{ character.items.offHand.tooltipParams.enchant }};domain=fr" class="q{{ character.items.offHand.quality }}">
-            <img src="http://media.blizzard.com/wow/icons/56/{{ character.items.offHand.icon }}.jpg" alt="{{ character.items.offHand.name }}">
-            <span class="q"></span>
-        </a>
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.offHand} %}
         <span class="name q{{ character.items.offHand.quality }}">{{ character.items.offHand.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
