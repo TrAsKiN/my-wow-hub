@@ -2,7 +2,7 @@
 
 A simple WoW Hub in PHP using **Battle.net API**.
 
-View a demonstration on my website : http://wow.traskin.net/
+View a demonstration on my website : http://hub.my-wow.com/
 
 ## Installation
 
@@ -14,4 +14,4 @@ Clone the repository and install components with the command `composer install` 
 
 ### Step 2
 
-Rename the file `conf.php.dist` to `conf.php` and change the values with yours (available on https://dev.battle.net/apps/mykeys).
+Copy and rename the file `conf.php.dist` to `conf.php` and change the values with yours (available on https://dev.battle.net/apps/mykeys).
