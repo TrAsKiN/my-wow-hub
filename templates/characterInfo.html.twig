@@ -10,7 +10,7 @@
 <div class="container img-rounded" id="character" style="background-image:url('http://eu.battle.net/static-render/eu/{{ character.cover }}');">
     <div id="head" class="col-sm-6 items">
         {% if character.items.head is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.head} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.head, 'locale': locale} %}
         <span class="name q{{ character.items.head.quality }}">{{ character.items.head.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -19,7 +19,7 @@
     <div id="hands" class="col-sm-6 items text-xs-right">
         {% if character.items.hands is defined %}
         <span class="name q{{ character.items.hands.quality }}">{{ character.items.hands.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.hands} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.hands, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -27,7 +27,7 @@
     <div class="clearfix"></div>
     <div id="neck" class="col-sm-6 items">
         {% if character.items.neck is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.neck} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.neck, 'locale': locale} %}
         <span class="name q{{ character.items.neck.quality }}">{{ character.items.neck.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -36,7 +36,7 @@
     <div id="waist" class="col-sm-6 items text-xs-right">
         {% if character.items.waist is defined %}
         <span class="name q{{ character.items.waist.quality }}">{{ character.items.waist.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.waist} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.waist, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -44,7 +44,7 @@
     <div class="clearfix"></div>
     <div id="shoulder" class="col-sm-6 items">
         {% if character.items.shoulder is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.shoulder} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.shoulder, 'locale': locale} %}
         <span class="name q{{ character.items.shoulder.quality }}">{{ character.items.shoulder.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -53,7 +53,7 @@
     <div id="legs" class="col-sm-6 items text-xs-right">
         {% if character.items.legs is defined %}
         <span class="name q{{ character.items.legs.quality }}">{{ character.items.legs.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.legs} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.legs, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -61,7 +61,7 @@
     <div class="clearfix"></div>
     <div id="back" class="col-sm-6 items">
         {% if character.items.back is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.back} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.back, 'locale': locale} %}
         <span class="name q{{ character.items.back.quality }}">{{ character.items.back.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -70,7 +70,7 @@
     <div id="feet" class="col-sm-6 items text-xs-right">
         {% if character.items.feet is defined %}
         <span class="name q{{ character.items.feet.quality }}">{{ character.items.feet.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.feet} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.feet, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -78,7 +78,7 @@
     <div class="clearfix"></div>
     <div id="chest" class="col-sm-6 items">
         {% if character.items.chest is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.chest} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.chest, 'locale': locale} %}
         <span class="name q{{ character.items.chest.quality }}">{{ character.items.chest.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -87,7 +87,7 @@
     <div id="finger1" class="col-sm-6 items text-xs-right">
         {% if character.items.finger1 is defined %}
         <span class="name q{{ character.items.finger1.quality }}">{{ character.items.finger1.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.finger1} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.finger1, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -95,7 +95,7 @@
     <div class="clearfix"></div>
     <div id="shirt" class="col-sm-6 items">
         {% if character.items.shirt is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.shirt} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.shirt, 'locale': locale} %}
         <span class="name q{{ character.items.shirt.quality }}">{{ character.items.shirt.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -104,7 +104,7 @@
     <div id="finger2" class="col-sm-6 items text-xs-right">
         {% if character.items.finger2 is defined %}
         <span class="name q{{ character.items.finger2.quality }}">{{ character.items.finger2.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.finger2} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.finger2, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -112,7 +112,7 @@
     <div class="clearfix"></div>
     <div id="tabard" class="col-sm-6 items">
         {% if character.items.tabard is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.tabard} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.tabard, 'locale': locale} %}
         <span class="name q{{ character.items.tabard.quality }}">{{ character.items.tabard.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -121,7 +121,7 @@
     <div id="trinket1" class="col-sm-6 items text-xs-right">
         {% if character.items.trinket1 is defined %}
         <span class="name q{{ character.items.trinket1.quality }}">{{ character.items.trinket1.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.trinket1} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.trinket1, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -129,7 +129,7 @@
     <div class="clearfix"></div>
     <div id="wrist" class="col-sm-6 items">
         {% if character.items.wrist is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.wrist} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.wrist, 'locale': locale} %}
         <span class="name q{{ character.items.wrist.quality }}">{{ character.items.wrist.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
@@ -138,7 +138,7 @@
     <div id="trinket2" class="col-sm-6 items text-xs-right">
         {% if character.items.trinket2 is defined %}
         <span class="name q{{ character.items.trinket2.quality }}">{{ character.items.trinket2.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.trinket2} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.trinket2, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
@@ -147,14 +147,14 @@
     <div id="mainHand" class="col-sm-6 items text-xs-right">
         {% if character.items.mainHand is defined %}
         <span class="name q{{ character.items.mainHand.quality }}">{{ character.items.mainHand.name }}</span>
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.mainHand} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.mainHand, 'locale': locale} %}
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
         {% endif %}
     </div>
     <div id="offHand" class="col-sm-6 items">
         {% if character.items.offHand is defined %}
-        {% include 'items.html.twig' with {'character': character, 'item': character.items.offHand} %}
+        {% include 'items.html.twig' with {'character': character, 'item': character.items.offHand, 'locale': locale} %}
         <span class="name q{{ character.items.offHand.quality }}">{{ character.items.offHand.name }}</span>
         {% else %}
         <div class="empty"><div class="q0"><span class="q"></span></div></div>
