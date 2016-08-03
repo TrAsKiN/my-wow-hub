@@ -38,5 +38,6 @@ $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterIn
 echo $twig->render('characterInfo.html.twig', array(
     'character' => $characterInfo,
     'battleTag' => $_COOKIE['battle_tag'],
-    'guilds'    => $_SESSION['guilds']
+    'guilds'    => $_SESSION['guilds'],
+    'locale'    => LOCALE
 ));
