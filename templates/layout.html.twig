@@ -35,7 +35,7 @@
                         {% if battleTag is defined %}
                         <li class="nav-item dropdown pull-xs-right">
                             <a href="#" class="nav-link dropdown-toggle" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ battleTag|split('#', 1)|first }}
+                                {{ battleTag|split('#')|first }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="account">
                                 <a class="dropdown-item" href="./logout.php">Déconnexion</a>
