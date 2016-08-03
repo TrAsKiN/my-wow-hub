@@ -33,6 +33,10 @@ h1.display-1 small a{
     font-size: 60%;
 }
 
+.nav-link .dropdown-toggle{
+    background-color: transparent;
+}
+
 #character{
     width: 740px;
     height: 550px;
