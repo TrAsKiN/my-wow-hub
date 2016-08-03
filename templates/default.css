@@ -33,10 +33,6 @@ h1.display-1 small a{
     font-size: 60%;
 }
 
-.nav-link .dropdown-toggle{
-    background-color: transparent;
-}
-
 #character{
     width: 740px;
     height: 550px;
@@ -52,7 +48,12 @@ h1.display-1 small a{
     padding: 3px;
     background: linear-gradient(to right, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
     padding-left: 15px;
-    border-radius: 3px;
+}
+#character .items #head{
+    border-radius: 3px 0 0 0;
+}
+#character .items #hands{
+    border-radius: 0 3px 0 0;
 }
 #character .items.text-xs-right{
     background: linear-gradient(to left, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
