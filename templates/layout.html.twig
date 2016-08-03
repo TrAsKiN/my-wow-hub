@@ -22,7 +22,7 @@
                     <ul class="nav navbar-nav">
                         {% if guilds is not empty %}
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" type="button" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link dropdown-toggle" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mes guildes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="myGuilds">
@@ -34,7 +34,7 @@
                         {% endif %}
                         {% if battleTag is defined %}
                         <li class="nav-item dropdown pull-xs-right">
-                            <a href="#" class="nav-link dropdown-toggle" type="button" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link dropdown-toggle" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ (battleTag is defined) ? battleTag }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="account">
