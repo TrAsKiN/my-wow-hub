@@ -49,10 +49,10 @@ h1.display-1 small a{
     background: linear-gradient(to right, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
     padding-left: 15px;
 }
-#character .items #head{
+#character #head.items{
     border-radius: 3px 0 0 0;
 }
-#character .items #hands{
+#character #hands.items{
     border-radius: 0 3px 0 0;
 }
 #character .items.text-xs-right{
