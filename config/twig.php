@@ -1,6 +1,6 @@
 <?php
 
-$loader = new Twig_Loader_Filesystem('./templates');
+$loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
 $twig = new Twig_Environment($loader);
 /*
 $twig = new Twig_Environment($loader, array(
