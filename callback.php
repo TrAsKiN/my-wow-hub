@@ -3,6 +3,8 @@
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 
+use \Curl\Curl;
+
 $options[CURLOPT_CUSTOMREQUEST] = 'POST';
 $options[CURLOPT_URL] = TOKEN_URL .'?'. http_build_query(array(
     'redirect_uri'  => REDIRECT,
@@ -13,7 +15,7 @@ $options[CURLOPT_URL] = TOKEN_URL .'?'. http_build_query(array(
     'code'          => $_GET['code']
 ));
 
-$curl = new \Curl\Curl();
+$curl = new Curl();
 $curl->get($options);
 $result = $curl->response;
 $curl->close();
@@ -25,7 +27,7 @@ $options[CURLOPT_URL] = API_URL .'/account/user?'. http_build_query(array(
     'access_token' => $token->access_token
 ));
 
-$curl = new \Curl\Curl();
+$curl = new Curl();
 $curl->get($options);
 $result = $curl->response;
 $curl->close();

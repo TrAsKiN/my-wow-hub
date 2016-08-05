@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 require __DIR__ . '/config/twig.php';
 
+use \Curl\Curl;
+
 if (!empty($_GET['name']) || !empty($_GET['realm'])) {
     $guildRealm = $_GET['realm'];
     $guildName  = $_GET['name'];
@@ -22,7 +24,7 @@ $options[CURLOPT_URL] = API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. 
     'fields' => 'members'
 ));
 
-$curl = new \Curl\Curl();
+$curl = new Curl();
 $curl->get($options);
 $result = $curl->response;
 $curl->close();

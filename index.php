@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 require __DIR__ . '/config/twig.php';
 
+use \Curl\Curl;
+
 $authorized = isset($_COOKIE['access_token']);
 
 if ($authorized) {
@@ -13,7 +15,7 @@ if ($authorized) {
         'locale'        => LOCALE
     ));
 
-    $curl = new \Curl\Curl();
+    $curl = new Curl();
     $curl->get($options);
     $result = $curl->response;
     $curl->close();
