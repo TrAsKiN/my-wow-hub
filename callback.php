@@ -6,29 +6,27 @@ require __DIR__ . '/config/conf.php';
 use \Curl\Curl;
 
 $options[CURLOPT_CUSTOMREQUEST] = 'POST';
-$options[CURLOPT_URL] = TOKEN_URL .'?'. http_build_query(array(
+
+$curl = new Curl();
+$curl->get(TOKEN_URL .'?'. http_build_query(array(
     'redirect_uri'  => REDIRECT,
     'client_id'     => CLIENT_ID,
     'client_secret' => CLIENT_SECRET,
     'scope'         => SCOPE,
     'grant_type'    => 'authorization_code',
     'code'          => $_GET['code']
-));
-
-$curl = new Curl();
-$curl->get($options);
+)), $options);
 $result = $curl->response;
 $curl->close();
 
 $token = json_decode($result);
 
 $options[CURLOPT_CUSTOMREQUEST] = 'GET';
-$options[CURLOPT_URL] = API_URL .'/account/user?'. http_build_query(array(
-    'access_token' => $token->access_token
-));
 
 $curl = new Curl();
-$curl->get($options);
+$curl->get( API_URL .'/account/user?'. http_build_query(array(
+    'access_token' => $token->access_token
+)), $options);
 $result = $curl->response;
 $curl->close();
 

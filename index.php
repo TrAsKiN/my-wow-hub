@@ -10,13 +10,12 @@ $authorized = isset($_COOKIE['access_token']);
 
 if ($authorized) {
     $options[CURLOPT_CUSTOMREQUEST] = 'GET';
-    $options[CURLOPT_URL] = API_URL .'/wow/user/characters?'. http_build_query(array(
-        'access_token'  => $_COOKIE['access_token'],
-        'locale'        => LOCALE
-    ));
 
     $curl = new Curl();
-    $curl->get($options);
+    $curl->get(API_URL .'/wow/user/characters?'. http_build_query(array(
+        'access_token'  => $_COOKIE['access_token'],
+        'locale'        => LOCALE
+    )), $options);
     $result = $curl->response;
     $curl->close();
 

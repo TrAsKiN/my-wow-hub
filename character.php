@@ -18,14 +18,13 @@ if (!empty($_GET['realm']) && !empty($_GET['name'])) {
 }
 
 $options[CURLOPT_CUSTOMREQUEST] = 'GET';
-$options[CURLOPT_URL] = API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name) .'?'. http_build_query(array(
+
+$curl = new Curl();
+$curl->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name) .'?'. http_build_query(array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'items,guild'
-));
-
-$curl = new Curl();
-$curl->get($options);
+)), $options);
 $result = $curl->response;
 $curl->close();
 
