@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1 class="display-1">{{ character.name }} <small><a href="./guild.php?realm={{ character.guild.realm|url_encode }}&amp;name={{ character.guild.name|url_encode }}">{{ character.guild.name }}</a></small></h1>
+<h1 class="display-1">{{ character.name }} <small><a href="./guild.php?realm={{ character.guild.realm|slugify|url_encode }}&amp;name={{ character.guild.name|slugify|url_encode }}">{{ character.guild.name }}</a></small></h1>
 <p class="lead pull-xs-right"><strong>Niveau : {{ character.level }}</strong> / <small>iLvl : {{ character.items.averageItemLevelEquipped }}</small></p>
 <p class="lead"><strong>{{ character.realm }}</strong>, <small><em>{{ character.battlegroup }}</em></small></p>
 <div class="container img-rounded" id="character" style="background-image:url('http://eu.battle.net/static-render/eu/{{ character.cover }}');">

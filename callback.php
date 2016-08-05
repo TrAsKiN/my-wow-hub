@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/config/conf.php';
+require __DIR__ . '/config/init.php';
 
 $curl->post(TOKEN_URL, array(
     'redirect_uri'  => REDIRECT,
