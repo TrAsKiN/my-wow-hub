@@ -88,7 +88,7 @@ h1.display-1 small a{
     display: block;
     width: 49px;
     height: 49px;
-    background-image: url(../images/inventory-slots.png);
+    background-image: url(./images/inventory-slots.png);
     opacity: .8;
 }
 #character .items .q:hover{
@@ -135,7 +135,7 @@ h1.display-1 small a{
     margin: 1px;
     width: 47px;
     height: 47px;
-    background-image: url(../images/item-empty-bg.png);
+    background-image: url(./images/item-empty-bg.png);
 }
 
 #head .q0{background-position: 0 0;}

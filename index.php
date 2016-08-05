@@ -1,13 +1,8 @@
 <?php
 
 require_once './vendor/autoload.php';
-require_once './conf.php';
-
-$loader = new Twig_Loader_Filesystem('./templates');
-$twig = new Twig_Environment($loader, array(
-    'debug' => true
-));
-$twig->addExtension(new Twig_Extension_Debug());
+require_once './config/conf.php';
+require_once './config/twig.php';
 
 $authorized = isset($_COOKIE['access_token']);
 
@@ -18,10 +13,10 @@ if ($authorized) {
         'locale'        => LOCALE
     ));
 
-    $wow = curl_init();
-    curl_setopt_array($wow, $options);
-    $result = curl_exec($wow);
-    curl_close($wow);
+    $curl = new \Curl\Curl();
+    $curl->get($options);
+    $result = $curl->response;
+    $curl->close();
 
     $characters = json_decode($result, true);
     $name = [];
