@@ -4,8 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 require __DIR__ . '/config/twig.php';
 
-use \Curl\Curl;
-
 if (!empty($_GET['name']) || !empty($_GET['realm'])) {
     $guildRealm = $_GET['realm'];
     $guildName  = $_GET['name'];
@@ -17,18 +15,15 @@ if (!empty($_GET['name']) || !empty($_GET['realm'])) {
     exit;
 }
 
-$options[CURLOPT_CUSTOMREQUEST] = 'GET';
-
-$curl = new Curl();
-$curl->get(API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode($guildName) .'?'. http_build_query(array(
+$curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
+$curl->get(API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode($guildName), array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'members'
-)), $options);
-$result = $curl->response;
-$curl->close();
+));
+$curl->exec();
 
-$guildInfo = json_decode($result, true);
+$guildInfo = json_decode($curl->response->data, true);
 foreach ($guildInfo['members'] as $key => $value) {
     $guildInfo['members'][$key]['character']['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['character']['thumbnail']);
 }

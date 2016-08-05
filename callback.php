@@ -5,32 +5,26 @@ require __DIR__ . '/config/conf.php';
 
 use \Curl\Curl;
 
-$options[CURLOPT_CUSTOMREQUEST] = 'POST';
-
-$curl = new Curl();
-$curl->get(TOKEN_URL .'?'. http_build_query(array(
+$curl->setOpt(CURLOPT_CUSTOMREQUEST, 'POST');
+$curl->setURL(TOKEN_URL, array(
     'redirect_uri'  => REDIRECT,
     'client_id'     => CLIENT_ID,
     'client_secret' => CLIENT_SECRET,
     'scope'         => SCOPE,
     'grant_type'    => 'authorization_code',
     'code'          => $_GET['code']
-)), $options);
-$result = $curl->response;
-$curl->close();
+));
 
-$token = json_decode($result);
+$curl->exec();
+$token = json_decode($curl->response->data);
 
-$options[CURLOPT_CUSTOMREQUEST] = 'GET';
-
-$curl = new Curl();
-$curl->get( API_URL .'/account/user?'. http_build_query(array(
+$curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
+$curl->setURL(API_URL .'/account/user', array(
     'access_token' => $token->access_token
-)), $options);
-$result = $curl->response;
-$curl->close();
+));
 
-$battleTag = json_decode($result);
+$curl->exec();
+$battleTag = json_decode($curl->response->data);
 
 header('Location: '. HUB .'/register.php?'. http_build_query(array(
     'token' => $token->access_token,

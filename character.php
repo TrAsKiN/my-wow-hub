@@ -4,8 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 require __DIR__ . '/config/twig.php';
 
-use \Curl\Curl;
-
 if (!empty($_GET['realm']) && !empty($_GET['name'])) {
     $realm  = $_GET['realm'];
     $name   = $_GET['name'];
@@ -17,18 +15,15 @@ if (!empty($_GET['realm']) && !empty($_GET['name'])) {
     exit;
 }
 
-$options[CURLOPT_CUSTOMREQUEST] = 'GET';
-
-$curl = new Curl();
-$curl->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name) .'?'. http_build_query(array(
+$curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
+$curl->setURL(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name), array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'items,guild'
-)), $options);
-$result = $curl->response;
-$curl->close();
+));
+$curl->exec();
 
-$characterInfo = json_decode($result, true);
+$characterInfo = json_decode($curl->response->data, true);
 $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
 
 echo $twig->render('characterInfo.html.twig', array(

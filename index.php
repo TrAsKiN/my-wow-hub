@@ -4,22 +4,17 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 require __DIR__ . '/config/twig.php';
 
-use \Curl\Curl;
-
 $authorized = isset($_COOKIE['access_token']);
 
 if ($authorized) {
-    $options[CURLOPT_CUSTOMREQUEST] = 'GET';
-
-    $curl = new Curl();
-    $curl->get(API_URL .'/wow/user/characters?'. http_build_query(array(
+    $curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
+    $curl->get(API_URL .'/wow/user/characters', array(
         'access_token'  => $_COOKIE['access_token'],
         'locale'        => LOCALE
-    )), $options);
-    $result = $curl->response;
-    $curl->close();
+    )));
+    $curl->exec();
 
-    $characters = json_decode($result, true);
+    $characters = json_decode($curl->response->data, true);
     $name = [];
     $level = [];
     $guilds = [];
