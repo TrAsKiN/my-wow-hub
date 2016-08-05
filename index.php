@@ -1,8 +1,8 @@
 <?php
 
-require_once './vendor/autoload.php';
-require_once './config/conf.php';
-require_once './config/twig.php';
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/config/conf.php';
+require __DIR__ . '/config/twig.php';
 
 $authorized = isset($_COOKIE['access_token']);
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once './config/conf.php';
+require __DIR__ . '/config/conf.php';
 
 $options[CURLOPT_CUSTOMREQUEST] = 'POST';
 $options[CURLOPT_URL] = TOKEN_URL .'?'. http_build_query(array(
