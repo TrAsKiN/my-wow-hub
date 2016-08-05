@@ -12,8 +12,6 @@ $curl->setOpt(CURLOPT_RETURNTRANSFER,   true);
 $curl->setOpt(CURLOPT_HEADER,           false);
 $curl->setOpt(CURLOPT_SSL_VERIFYPEER,   false);
 
-$slug = new Slugify();
-
 $url = AUTHORIZE_URL .'?'. http_build_query(array(
     'redirect_uri'  => REDIRECT,
     'client_id'     => CLIENT_ID,
