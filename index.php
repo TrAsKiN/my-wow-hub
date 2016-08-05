@@ -11,7 +11,7 @@ if ($authorized) {
     $curl->get(API_URL .'/wow/user/characters', array(
         'access_token'  => $_COOKIE['access_token'],
         'locale'        => LOCALE
-    )));
+    ));
     $curl->exec();
 
     $characters = json_decode($curl->response->data, true);
