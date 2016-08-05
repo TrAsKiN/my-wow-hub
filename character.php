@@ -15,15 +15,13 @@ if (!empty($_GET['realm']) && !empty($_GET['name'])) {
     exit;
 }
 
-$curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
-$curl->setURL(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name), array(
+$curl->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name), array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'items,guild'
 ));
-$curl->exec();
 
-$characterInfo = json_decode($curl->response->data, true);
+$characterInfo = (array) $curl->response;
 $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
 
 echo $twig->render('characterInfo.html.twig', array(

@@ -7,14 +7,12 @@ require __DIR__ . '/config/twig.php';
 $authorized = isset($_COOKIE['access_token']);
 
 if ($authorized) {
-    $curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
     $curl->get(API_URL .'/wow/user/characters', array(
         'access_token'  => $_COOKIE['access_token'],
         'locale'        => LOCALE
     ));
-    $curl->exec();
 
-    $characters = json_decode($curl->response->data, true);
+    $characters = (array) $curl->response;
     $name = [];
     $level = [];
     $guilds = [];

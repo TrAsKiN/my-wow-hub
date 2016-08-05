@@ -15,15 +15,13 @@ if (!empty($_GET['name']) || !empty($_GET['realm'])) {
     exit;
 }
 
-$curl->setOpt(CURLOPT_CUSTOMREQUEST, 'GET');
 $curl->get(API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode($guildName), array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'members'
 ));
-$curl->exec();
 
-$guildInfo = json_decode($curl->response->data, true);
+$guildInfo = (array) $curl->response;
 foreach ($guildInfo['members'] as $key => $value) {
     $guildInfo['members'][$key]['character']['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['character']['thumbnail']);
 }
