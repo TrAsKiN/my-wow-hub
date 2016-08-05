@@ -1,6 +1,7 @@
 <?php
 
-use Cocur\Slugify\Bridge\Twig\SlugifyExtension;
+use \Cocur\Slugify\Slugify;
+use \Cocur\Slugify\Bridge\Twig\SlugifyExtension;
 
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/../templates');
 $twig = new Twig_Environment($loader);

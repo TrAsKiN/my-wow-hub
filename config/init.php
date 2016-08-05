@@ -5,7 +5,6 @@ require __DIR__ . '/conf.php';
 session_start();
 
 use \Curl\Curl;
-use \Cocur\Slugify\Slugify;
 
 $curl = new Curl();
 $curl->setOpt(CURLOPT_CONNECTTIMEOUT,   10);
