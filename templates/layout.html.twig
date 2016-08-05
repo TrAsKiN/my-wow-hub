@@ -27,7 +27,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="myGuilds">
                                 {% for guild, realm in guilds if realm is not empty %}
-                                <a class="dropdown-item" href="./guild.php?realm={{ realm|slugify|url_encode }}&amp;name={{ guild|slugify|url_encode }}">{{ guild }}</a>
+                                <a class="dropdown-item" href="./guild.php?realm={{ realm|slugify|url_encode }}&amp;name={{ guild|lower|url_encode }}">{{ guild }}</a>
                                 {% endfor %}
                             </div>
                         </li>
