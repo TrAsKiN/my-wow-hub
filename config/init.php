@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/config/conf.php';
+require __DIR__ . '/conf.php';
 
 session_start();
 
