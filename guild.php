@@ -21,7 +21,7 @@ $curl->get(API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode(
     'fields' => 'members'
 ));
 
-$guildInfo = (array) $curl->response;
+$guildInfo = json_decode(json_encode($curl->response), true);
 foreach ($guildInfo['members'] as $key => $value) {
     $guildInfo['members'][$key]['character']['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['character']['thumbnail']);
 }

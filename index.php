@@ -4,15 +4,13 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config/conf.php';
 require __DIR__ . '/config/twig.php';
 
-$authorized = isset($_COOKIE['access_token']);
-
-if ($authorized) {
+if (isset($_COOKIE['access_token'])) {
     $curl->get(API_URL .'/wow/user/characters', array(
         'access_token'  => $_COOKIE['access_token'],
         'locale'        => LOCALE
     ));
 
-    $characters = (array) $curl->response;
+    $characters = json_decode(json_encode($curl->response), true);
     $name = [];
     $level = [];
     $guilds = [];
@@ -20,7 +18,7 @@ if ($authorized) {
         $characters['characters'][$key]['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['thumbnail']);
         $name[$key]     = $value['name'];
         $level[$key]    = $value['level'];
-        if (!array_key_exists($value['guild'], $guilds)){
+        if (!array_key_exists($value['guild'], $guilds)) {
             $guilds[$value['guild']] = $value['guildRealm'];
         }
     }

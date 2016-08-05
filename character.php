@@ -21,7 +21,7 @@ $curl->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($
     'fields' => 'items,guild'
 ));
 
-$characterInfo = (array) $curl->response;
+$characterInfo = json_decode(json_encode($curl->response), true);
 $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
 
 echo $twig->render('characterInfo.html.twig', array(
