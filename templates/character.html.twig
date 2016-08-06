@@ -1,24 +1,30 @@
-<a href="./character.php?realm={{ character.realm|url_encode }}&amp;name={{ character.name|url_encode }}">
+<a href="./character.php?realm={{ character.realm|slugify|url_encode }}&amp;name={{ character.name|lower|url_encode }}">
     <div class="col-lg-3 col-sm-6">
         <div class="card card-inverse" style="background-image:url('http://eu.battle.net/static-render/eu/{{ character.cover }}');">
             <div class="card-block">
                 <h4 class="card-title">{{ character.name }}</h4>
                 <p class="card-text">
                     <small>
+
                         {% if character.guild is defined and rank is not defined %}
                             {{ character.guild }}
                         {% else %}
+
                             {% if rank is defined %}
+
                                 {% if rank == 0 %}
-                                    Maître de guilde
+                                    Guild master
                                 {% else %}
-                                    Rang {{ rank }}
+                                    Rank {{ rank }}
                                 {% endif %}
+
                             {% endif %}
+
                         {% endif %}
+
                     </small><br>
-                    Niveau : <strong>{{ character.level }}</strong><br>
-                    <small class="text-muted">{% if character.spec is defined %}{{ character.spec.role }} ({{ character.spec.name }}){% else %}Pas de spécialisation{% endif %}</small>
+                    Level : <strong>{{ character.level }}</strong><br>
+                    <small class="text-muted">{% if character.spec is defined %}{{ character.spec.role }} ({{ character.spec.name }}){% else %}No specialization{% endif %}</small>
                 </p>
             </div>
         </div>

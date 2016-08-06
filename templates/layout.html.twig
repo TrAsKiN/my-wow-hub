@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,7 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
-        <link rel="stylesheet" href="./templates/default.css">
+        <link rel="stylesheet" href="./static/default.css">
 
         <link rel="icon" type="image/x-icon" href="./favicon.ico">
     </head>
@@ -20,28 +20,33 @@
                 <div class="collapse navbar-toggleable-xs" id="toggleNavbar">
                     <a class="navbar-brand" href="./">My WoW Hub</a>
                     <ul class="nav navbar-nav">
+
                         {% if guilds is not empty %}
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Mes guildes
+                                Guilds
                             </a>
                             <div class="dropdown-menu" aria-labelledby="myGuilds">
+
                                 {% for guild, realm in guilds if realm is not empty %}
-                                <a class="dropdown-item" href="./guild.php?realm={{ realm|url_encode }}&amp;name={{ guild|url_encode }}">{{ guild }}</a>
+                                <a class="dropdown-item" href="./guild.php?realm={{ realm|slugify|url_encode }}&amp;name={{ guild|lower|url_encode }}">{{ guild }}</a>
                                 {% endfor %}
+
                             </div>
                         </li>
                         {% endif %}
+
                         {% if battleTag is defined %}
                         <li class="nav-item dropdown pull-xs-right">
                             <a href="#" class="nav-link dropdown-toggle" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ battleTag|split('#')|first }}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="account">
-                                <a class="dropdown-item" href="./logout.php">Déconnexion</a>
+                            <div class="dropdown-menu dropdown-menu-right text-xs-right" aria-labelledby="account">
+                                <a class="dropdown-item" href="./logout.php">Sign out</a>
                             </div>
                         </li>
                         {% endif %}
+
                     </ul>
                 </div>
             </div>

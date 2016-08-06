@@ -1,13 +1,8 @@
 <?php
 
-require_once './vendor/autoload.php';
-require_once './conf.php';
-
-$loader = new Twig_Loader_Filesystem('./templates');
-$twig = new Twig_Environment($loader, array(
-    'debug' => true
-));
-$twig->addExtension(new Twig_Extension_Debug());
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/config/init.php';
+require __DIR__ . '/config/twig.php';
 
 if (!empty($_GET['realm']) && !empty($_GET['name'])) {
     $realm  = $_GET['realm'];
@@ -20,19 +15,13 @@ if (!empty($_GET['realm']) && !empty($_GET['name'])) {
     exit;
 }
 
-$options[CURLOPT_CUSTOMREQUEST] = 'GET';
-$options[CURLOPT_URL] = API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name) .'?'. http_build_query(array(
+$curl->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name), array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'items,guild'
 ));
 
-$character = curl_init();
-curl_setopt_array($character, $options);
-$result = curl_exec($character);
-curl_close($character);
-
-$characterInfo = json_decode($result, true);
+$characterInfo = json_decode(json_encode($curl->response), true);
 $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
 
 echo $twig->render('characterInfo.html.twig', array(

@@ -1,13 +1,8 @@
 <?php
 
-require_once './vendor/autoload.php';
-require_once './conf.php';
-
-$loader = new Twig_Loader_Filesystem('./templates');
-$twig = new Twig_Environment($loader, array(
-    'debug' => true
-));
-$twig->addExtension(new Twig_Extension_Debug());
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/config/init.php';
+require __DIR__ . '/config/twig.php';
 
 if (!empty($_GET['name']) || !empty($_GET['realm'])) {
     $guildRealm = $_GET['realm'];
@@ -20,19 +15,13 @@ if (!empty($_GET['name']) || !empty($_GET['realm'])) {
     exit;
 }
 
-$options[CURLOPT_CUSTOMREQUEST] = 'GET';
-$options[CURLOPT_URL] = API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode($guildName) .'?'. http_build_query(array(
+$curl->get(API_URL .'/wow/guild/'. rawurlencode($guildRealm) .'/'. rawurlencode($guildName), array(
     'apikey' => CLIENT_ID,
     'locale' => LOCALE,
     'fields' => 'members'
 ));
 
-$guild = curl_init();
-curl_setopt_array($guild, $options);
-$result = curl_exec($guild);
-curl_close($guild);
-
-$guildInfo = json_decode($result, true);
+$guildInfo = json_decode(json_encode($curl->response), true);
 foreach ($guildInfo['members'] as $key => $value) {
     $guildInfo['members'][$key]['character']['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['character']['thumbnail']);
 }

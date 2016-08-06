@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 const AUTHORIZE_URL = 'https://eu.battle.net/oauth/authorize';      // https://<region>.battle.net/oauth/authorize
 const TOKEN_URL     = 'https://eu.battle.net/oauth/token';          // https://<region>.battle.net/oauth/token
 const API_URL       = 'https://eu.api.battle.net';                  // https://<region>.api.battle.net
@@ -9,20 +7,5 @@ const CLIENT_ID     = 'YourClientID';                               // Available
 const CLIENT_SECRET = 'YourClientSecret';                           // Available on https://dev.battle.net/apps/mykeys
 const REDIRECT      = 'https://my.domain.tld/path/to/callback.php'; // Path to the callback.php script (must be a valid HTTPS and match to the callback url of your application)
 const HUB           = 'http://my.other.domain.tld';                 // URL of the Hub
-const LOCALE        = 'fr_FR';
+const LOCALE        = 'en_US';
 const SCOPE         = 'wow.profile';
-
-$options = array(
-    CURLOPT_CONNECTTIMEOUT  => 10,
-    CURLOPT_RETURNTRANSFER  => true,
-    CURLOPT_HEADER          => false,
-    CURLOPT_SSL_VERIFYPEER  => false
-);
-
-$url = AUTHORIZE_URL .'?'. http_build_query(array(
-    'redirect_uri'  => REDIRECT,
-    'client_id'     => CLIENT_ID,
-    'scope'         => SCOPE,
-    'response_type' => 'code',
-    'locale'        => LOCALE
-));
