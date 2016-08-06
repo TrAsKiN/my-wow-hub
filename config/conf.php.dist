@@ -7,5 +7,5 @@ const CLIENT_ID     = 'YourClientID';                               // Available
 const CLIENT_SECRET = 'YourClientSecret';                           // Available on https://dev.battle.net/apps/mykeys
 const REDIRECT      = 'https://my.domain.tld/path/to/callback.php'; // Path to the callback.php script (must be a valid HTTPS and match to the callback url of your application)
 const HUB           = 'http://my.other.domain.tld';                 // URL of the Hub
-const LOCALE        = 'fr_FR';
+const LOCALE        = 'en_US';
 const SCOPE         = 'wow.profile';
