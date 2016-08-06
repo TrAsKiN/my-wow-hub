@@ -20,18 +20,22 @@
                 <div class="collapse navbar-toggleable-xs" id="toggleNavbar">
                     <a class="navbar-brand" href="./">My WoW Hub</a>
                     <ul class="nav navbar-nav">
+
                         {% if guilds is not empty %}
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mes guildes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="myGuilds">
+
                                 {% for guild, realm in guilds if realm is not empty %}
                                 <a class="dropdown-item" href="./guild.php?realm={{ realm|slugify|url_encode }}&amp;name={{ guild|lower|url_encode }}">{{ guild }}</a>
                                 {% endfor %}
+
                             </div>
                         </li>
                         {% endif %}
+
                         {% if battleTag is defined %}
                         <li class="nav-item dropdown pull-xs-right">
                             <a href="#" class="nav-link dropdown-toggle" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,6 +46,7 @@
                             </div>
                         </li>
                         {% endif %}
+
                     </ul>
                 </div>
             </div>

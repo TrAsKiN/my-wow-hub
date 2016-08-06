@@ -12,7 +12,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #333;
-    opacity: .95;
+    opacity: .9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0);
     transition-property: opacity, box-shadow;
     transition-duration: .1s;
@@ -47,7 +47,7 @@ h1.display-1 small a{
     min-height: 49px;
     padding: 3px;
     background: linear-gradient(to right, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
-    padding-left: 15px;
+    padding-left: 8px;
 }
 #character #head.items{
     border-radius: .3rem 0 0 0;
@@ -55,9 +55,18 @@ h1.display-1 small a{
 #character #hands.items{
     border-radius: 0 .3rem 0 0;
 }
-#character .items.text-xs-right{
+#character .items#hands,
+#character .items#waist,
+#character .items#legs,
+#character .items#feet,
+#character .items#finger1,
+#character .items#finger2,
+#character .items#trinket1,
+#character .items#trinket2,
+#character .items#mainHand{
+    text-align: right !important;
     background: linear-gradient(to left, rgba(0, 0, 0, .9), rgba(0, 0, 0, .0));
-    padding-right: 15px;
+    padding-right: 7px;
 }
 #character .items a{
     display: inline-block;
@@ -70,7 +79,15 @@ h1.display-1 small a{
     float: left;
     z-index: 5;
 }
-#character .items.text-xs-right a{
+#character .items#hands a,
+#character .items#waist a,
+#character .items#legs a,
+#character .items#feet a,
+#character .items#finger1 a,
+#character .items#finger2 a,
+#character .items#trinket1 a,
+#character .items#trinket2 a,
+#character .items#mainHand a{
     float: right;
 }
 #character .items a:hover{
@@ -92,11 +109,11 @@ h1.display-1 small a{
     opacity: .8;
 }
 #character .items .q:hover{
-    opacity: .9;
+    opacity: 1;
 }
 #character .items .name{
     font-size: 75%;
-    padding: 4px 0 0 70px;
+    padding: 4px 0 0 62px;
     vertical-align: top;
     position: absolute;
     top: 0;
@@ -104,8 +121,16 @@ h1.display-1 small a{
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 1);
     z-index: 1;
 }
-#character .items.text-xs-right .name{
-    padding: 4px 70px 0 0;
+#character .items#hands .name,
+#character .items#waist .name,
+#character .items#legs .name,
+#character .items#feet .name,
+#character .items#finger1 .name,
+#character .items#finger2 .name,
+#character .items#trinket1 .name,
+#character .items#trinket2 .name,
+#character .items#mainHand .name{
+    padding: 4px 62px 0 0;
     right: 0;
 }
 #character .items#mainHand{
@@ -128,7 +153,15 @@ h1.display-1 small a{
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, .6);
     border-radius: 3px;
 }
-#character .items.text-xs-right .empty{
+#character .items#hands .empty,
+#character .items#waist .empty,
+#character .items#legs .empty,
+#character .items#feet .empty,
+#character .items#finger1 .empty,
+#character .items#finger2 .empty,
+#character .items#trinket1 .empty,
+#character .items#trinket2 .empty,
+#character .items#mainHand .empty{
     float: right;
 }
 #character .items .empty .q0{

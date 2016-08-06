@@ -5,17 +5,23 @@
                 <h4 class="card-title">{{ character.name }}</h4>
                 <p class="card-text">
                     <small>
+
                         {% if character.guild is defined and rank is not defined %}
                             {{ character.guild }}
                         {% else %}
+
                             {% if rank is defined %}
+
                                 {% if rank == 0 %}
                                     Maître de guilde
                                 {% else %}
                                     Rang {{ rank }}
                                 {% endif %}
+
                             {% endif %}
+
                         {% endif %}
+
                     </small><br>
                     Niveau : <strong>{{ character.level }}</strong><br>
                     <small class="text-muted">{% if character.spec is defined %}{{ character.spec.role }} ({{ character.spec.name }}){% else %}Pas de spécialisation{% endif %}</small>

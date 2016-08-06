@@ -17,7 +17,9 @@
 <div class="row">
 
     {% for member in members %}
+
     {% include 'character.html.twig' with {'character': member.character, 'rank': member.rank} %}
+
     {% endfor %}
 
 </div>
