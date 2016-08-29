@@ -1,6 +1,6 @@
 <a href="./character.php?realm={{ character.realm|slugify|url_encode }}&amp;name={{ character.name|lower|url_encode }}">
     <div class="col-lg-3 col-sm-6">
-        <div class="card card-inverse" style="background-image:url('http://eu.battle.net/static-render/eu/{{ character.cover }}');">
+        <div class="card card-inverse" style="background-image:url('http://render-api-eu.worldofwarcraft.com/static-render/eu/{{ character.cover }}');">
             <div class="card-block">
                 <h4 class="card-title">{{ character.name }}</h4>
                 <p class="card-text">

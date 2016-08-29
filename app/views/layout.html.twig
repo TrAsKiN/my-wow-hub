@@ -9,7 +9,7 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
-        <link rel="stylesheet" href="./static/default.css">
+        <link rel="stylesheet" href="./default.css">
 
         <link rel="icon" type="image/x-icon" href="./favicon.ico">
     </head>
@@ -18,17 +18,17 @@
             <div class="container">
                 <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#toggleNavbar">&#9776;</button>
                 <div class="collapse navbar-toggleable-xs" id="toggleNavbar">
-                    <a class="navbar-brand" href="./">My WoW Hub</a>
+                    <a class="navbar-brand" href="{{ path('home') }}">My WoW Hub</a>
                     <ul class="nav navbar-nav">
 
-                        {% if guilds is not empty %}
+                        {% if global.session.get('guilds') is not empty %}
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="{{ path('home') }}" class="nav-link dropdown-toggle" id="myGuilds" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Guilds
                             </a>
                             <div class="dropdown-menu" aria-labelledby="myGuilds">
 
-                                {% for guild, realm in guilds if realm is not empty %}
+                                {% for guild, realm in global.session.get('guilds') if realm is not empty %}
                                 <a class="dropdown-item" href="./guild.php?realm={{ realm|slugify|url_encode }}&amp;name={{ guild|lower|url_encode }}">{{ guild }}</a>
                                 {% endfor %}
 
@@ -36,13 +36,13 @@
                         </li>
                         {% endif %}
 
-                        {% if battleTag is defined %}
+                        {% if global.request.cookies.has('battle_tag') %}
                         <li class="nav-item dropdown pull-xs-right">
                             <a href="#" class="nav-link dropdown-toggle" id="account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ battleTag|split('#')|first }}
+                                {{ global.request.cookies.get('battle_tag')|split('#')|first }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right text-xs-right" aria-labelledby="account">
-                                <a class="dropdown-item" href="./logout.php">Sign out</a>
+                                <a class="dropdown-item" href="{{ 'logout' }}">Sign out</a>
                             </div>
                         </li>
                         {% endif %}
