@@ -16,9 +16,9 @@
 </div>
 <div class="row">
 
-    {% for member in members %}
+    {% for member in guild.members %}
 
-    {% include 'character.html.twig' with {'character': member.character, 'rank': member.rank} %}
+    {% include 'Index/character.html.twig' with {'character': member.character, 'rank': member.rank} %}
 
     {% endfor %}
 
