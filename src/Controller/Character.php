@@ -1,32 +1,24 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/config/init.php';
-require __DIR__ . '/config/twig.php';
+namespace MyWoWHub\Controller;
 
-if (!empty($_GET['realm']) && !empty($_GET['name'])) {
-    $realm  = $_GET['realm'];
-    $name   = $_GET['name'];
-} else {
-    header("HTTP/1.0 404 Not Found");
-    echo $twig->render('characterError.html.twig', array(
-        'battleTag' => $_COOKIE['battle_tag']
-    ));
-    exit;
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+
+class Character
+{
+    public function show(Request $request, Application $app, $realm, $character) {
+        $app['curl']->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($character), array(
+            'apikey' => CLIENT_ID,
+            'locale' => LOCALE,
+            'fields' => 'items,guild'
+        ));
+
+        $characterInfo = json_decode(json_encode($app['curl']->response), true);
+        $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
+
+        return $app['twig']->render('Character/show.html.twig', array(
+            'character' => $characterInfo
+        ));
+    }
 }
-
-$curl->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($name), array(
-    'apikey' => CLIENT_ID,
-    'locale' => LOCALE,
-    'fields' => 'items,guild'
-));
-
-$characterInfo = json_decode(json_encode($curl->response), true);
-$characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
-
-echo $twig->render('characterInfo.html.twig', array(
-    'character' => $characterInfo,
-    'battleTag' => $_COOKIE['battle_tag'],
-    'guilds'    => $_SESSION['guilds'],
-    'locale'    => LOCALE
-));

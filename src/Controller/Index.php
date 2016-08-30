@@ -33,11 +33,11 @@ class Index
 
             array_multisort($level, SORT_DESC, $name, SORT_ASC, $characters['characters']);
 
-            return $app['twig']->render('listCharacters.html.twig', array(
-                'characters'    => $characters['characters']
+            return $app['twig']->render('Index/list.html.twig', array(
+                'characters' => $characters['characters']
             ));
         } else {
-            return $app['twig']->render('index.html.twig', array(
+            return $app['twig']->render('Index/index.html.twig', array(
                 'url' => AUTHORIZE_URL .'?'. http_build_query(array(
                     'redirect_uri'  => REDIRECT,
                     'client_id'     => CLIENT_ID,
@@ -50,9 +50,12 @@ class Index
     }
 
     public function logout(Request $request, Application $app) {
-        $request->cookies->remove('access_token');
-        $request->cookies->remove('battle_tag');
+        $app['session']->clear();
+        
+        $response = $app->redirect($app['url_generator']->generate('home'));
+        $response->headers->clearCookie('access_token');
+        $response->headers->clearCookie('battle_tag');
 
-        return $app->redirect($app['url_generator']->generate('home'));
+        return $response;
     }
 }

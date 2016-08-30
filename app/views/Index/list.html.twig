@@ -21,7 +21,7 @@
 
     {% for character in characters if character.realm == actualRealm %}
 
-    {% include 'character.html.twig' with {'character': character} %}
+    {% include 'Index/character.html.twig' with {'character': character} %}
 
     {% endfor %}
 

@@ -5,7 +5,8 @@
         "cocur/slugify": "^2.2",
         "silex/silex": "^2.0",
         "symfony/twig-bridge": "^3.1",
-        "symfony/var-dumper": "^3.1"
+        "symfony/var-dumper": "^3.1",
+        "symfony/asset": "^3.1"
     },
     "autoload": {
         "psr-4": {"MyWoWHub\\": "src/"}
