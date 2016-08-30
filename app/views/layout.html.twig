@@ -42,7 +42,7 @@
                                 {{ global.request.cookies.get('battle_tag')|split('#')|first }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right text-xs-right" aria-labelledby="account">
-                                <a class="dropdown-item" href="{{ 'logout' }}">Sign out</a>
+                                <a class="dropdown-item" href="{{ path('logout') }}">Sign out</a>
                             </div>
                         </li>
                         {% endif %}
