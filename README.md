@@ -1,5 +1,7 @@
 # My WoW Hub
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/267657b8-5f65-45e0-a83d-9666b609470e/mini.png)](https://insight.sensiolabs.com/projects/267657b8-5f65-45e0-a83d-9666b609470e)
+
 A simple WoW Hub in PHP using **Battle.net API** and **Silex**.
 
 View a demonstration on my website : http://hub.my-wow.com/
