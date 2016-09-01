@@ -1,4 +1,6 @@
 {
+    "name": "TrAsKiN/my-wow-hub",
+    "description": "A simple WoW Hub in PHP using Battle.net API.",
     "require": {
         "twig/twig": "^1.0",
         "php-curl-class/php-curl-class": "^4.13",
