@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Guild
 {
-    public function show(Request $request, Application $app, $realm, $guild) {
+    public function show(Application $app, $realm, $guild) {
         $app['curl']->get(API_URL .'/wow/guild/'. rawurlencode($realm) .'/'. rawurlencode($guild), array(
             'apikey' => CLIENT_ID,
             'locale' => LOCALE,

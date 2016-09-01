@@ -49,9 +49,9 @@ class Index
         }
     }
 
-    public function logout(Request $request, Application $app) {
+    public function logout(Application $app) {
         $app['session']->clear();
-        
+
         $response = $app->redirect($app['url_generator']->generate('home'));
         $response->headers->clearCookie('access_token');
         $response->headers->clearCookie('battle_tag');
