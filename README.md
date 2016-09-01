@@ -21,3 +21,5 @@ Copy and rename the file `conf.php.dist` to `conf.php` and change the values wit
 Copy your `conf.php` file. If your file is the first version, then it contains lines that were deleted. Look at the new file and keep only the corresponding lines.
 
 Update your repository with `git pull` command. Move your `conf.php` file in the new folder `app/config/`.
+
+Update your components with `composer update` command.
