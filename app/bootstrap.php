@@ -31,7 +31,7 @@ $app->register(new Silex\Provider\AssetServiceProvider());
 if ($app['debug']) {
     $app->register(new Silex\Provider\VarDumperServiceProvider());
     $app->register(new Silex\Provider\MonologServiceProvider(), array(
-        'monolog.logfile' => __DIR__.'/../var/logs/silex_dev.log',
+        'monolog.logfile' => __DIR__.'/logs/silex_dev.log',
     ));
     $app->register(new Silex\Provider\HttpFragmentServiceProvider());
     $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
