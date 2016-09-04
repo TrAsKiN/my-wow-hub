@@ -6,19 +6,19 @@ A simple WoW Hub in PHP using **Battle.net API** and **Silex**.
 View a demonstration on my website : http://hub.my-wow.com/
 
 ## Installation
-### Step 1
-#### Pre-require
-- Install [Composer](https://getcomposer.org/) to automate the installation and update components.
+### Pre-require
+- [Composer](https://getcomposer.org/) to automate the installation and update components.
 
+### Step 1
 To install the application, you have 3 choices:
  - Clone the github repository;
- - Create a new project with composer (`composer create-project traskin/my-wow-hub`);
- - Download the [latest release](https://github.com/TrAsKiN/my-wow-hub/releases/latest).
+ - Download the [latest release](https://github.com/TrAsKiN/my-wow-hub/releases/latest);
+ - Create a new project with composer (`composer create-project traskin/my-wow-hub`).
 
 Install application components by running `composer install` from the application folder.
 
 ### Step 2
-Configure your application by duplicating the `app/config/conf.php.dist` in `app/config/conf.php.dist` and change the values with your own.
+Configure your application by duplicating the `app/config/conf.php.dist` in `app/config/conf.php` and change the values with your own.
 
 The values of the Battle.net API are available on the website: https://dev.battle.net/apps/mykeys.
 
@@ -28,7 +28,7 @@ To access your application, configure your web server on the `web` folder.
 ### It's done!
 
 ## Contribute
-Need help contribute to the development of the application? Contact me on [Twitter](https://twitter.com/notTrAsKiN).
+You need help to contribute on the development of the application? Contact me on [Twitter](https://twitter.com/notTrAsKiN).
 
 ## License
 This project is under **MIT license**.
