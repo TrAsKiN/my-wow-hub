@@ -3,8 +3,6 @@
 
 A simple WoW Hub in PHP using **Battle.net API** and **Silex**.
 
-View a demonstration on my website : http://hub.my-wow.com/
-
 ## Installation
 ### Pre-require
 - [Composer](https://getcomposer.org/) to automate the installation and update components.
