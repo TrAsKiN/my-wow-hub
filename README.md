@@ -5,10 +5,12 @@ A simple WoW Hub in PHP using **Battle.net API** and **Silex**.
 
 ## Installation
 ### Pre-require
+
 - [Composer](https://getcomposer.org/) to automate the installation and update components.
 
 ### Step 1
 To install the application, you have 3 choices:
+
  - Clone the github repository;
  - Download the [latest release](https://github.com/TrAsKiN/my-wow-hub/releases/latest);
  - Create a new project with composer (`composer create-project traskin/my-wow-hub`).
