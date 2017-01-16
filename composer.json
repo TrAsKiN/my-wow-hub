@@ -20,10 +20,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php -r \"copy('app/config/conf.php.dist', ''app/config/conf.php');\""
+            "php -r \"copy('app/config/conf.php.dist', 'app/config/conf.php');\""
         ],
         "post-create-project-cmd": [
-            "php -r \"copy('app/config/conf.php.dist', ''app/config/conf.php');\""
+            "php -r \"copy('app/config/conf.php.dist', 'app/config/conf.php');\""
         ]
     }
 }
