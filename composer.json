@@ -17,13 +17,5 @@
     },
     "autoload": {
         "psr-4": {"MyWoWHub\\": "src/"}
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "php -r \"copy('app/config/conf.php.dist', 'app/config/conf.php');\""
-        ],
-        "post-create-project-cmd": [
-            "php -r \"copy('app/config/conf.php.dist', 'app/config/conf.php');\""
-        ]
     }
 }

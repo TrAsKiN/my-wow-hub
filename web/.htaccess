@@ -1,8 +1,6 @@
-<IfModule mod_rewrite.c>
-    Options -MultiViews
-
+<IfModule rewrite_module>
     RewriteEngine On
-    #RewriteBase /my-wow-hub/
+    RewriteBase /my-wow-hub
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
