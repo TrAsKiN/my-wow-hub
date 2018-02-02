@@ -20,6 +20,7 @@ class Index
             $guilds = [];
             foreach ($characters['characters'] as $key => $value) {
                 $characters['characters'][$key]['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['thumbnail']);
+                $characters['characters'][$key]['inset'] = preg_replace('/(avatar)/', 'inset', $value['thumbnail']);
                 $name[$key]     = $value['name'];
                 $level[$key]    = $value['level'];
                 if (isset($value['guild'])) {
