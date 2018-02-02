@@ -14,7 +14,7 @@
 </h1>
 <p class="lead pull-xs-right"><strong>Level : {{ character.level }}</strong> / <small>iLvl : {{ character.items.averageItemLevelEquipped }}</small></p>
 <p class="lead"><strong>{{ character.realm }}</strong>, <small><em>{{ character.battlegroup }}</em></small></p>
-<div class="container img-rounded" id="character" style="background-image:url('http://render-eu.worldofwarcraft.com/character/{{ character.cover }}');">
+<div class="container img-rounded" id="character" style="background-image:url('https://render-eu.worldofwarcraft.com/character/{{ character.cover }}');">
 
     {% for currentItem in listItems %}
     <div id="{{ currentItem }}" class="col-sm-6 items">

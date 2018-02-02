@@ -15,7 +15,7 @@ class Guild
 
         $guildInfo = json_decode(json_encode($app['curl']->response), true);
         foreach ($guildInfo['members'] as $key => $value) {
-            $guildInfo['members'][$key]['character']['cover'] = preg_replace('/(avatar)/', 'profilemain', $value['character']['thumbnail']);
+            $guildInfo['members'][$key]['character']['inset'] = preg_replace('/(avatar)/', 'inset', $value['character']['thumbnail']);
         }
 
         $name = [];
