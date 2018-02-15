@@ -14,7 +14,7 @@ class Character
         ));
 
         $characterInfo = json_decode(json_encode($app['curl']->response), true);
-        $characterInfo['cover'] = preg_replace('/(avatar)/', 'profilemain', $characterInfo['thumbnail']);
+        $characterInfo['cover'] = preg_replace('/(avatar)/', 'main', $characterInfo['thumbnail']);
 
         return $app['twig']->render('Character/show.html.twig', array(
             'character' => $characterInfo
