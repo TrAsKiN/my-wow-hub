@@ -1,15 +1,15 @@
 {% set rel = {
-    "item": item.id,
-    "lvl": character.level,
-    "ilvl": item.itemLevel,
-    "gems": item.tooltipParams.gem0|default(''),
-    "upgd": item.tooltipParams.upgrade.current|default(''),
-    "bonus": item.bonusLists|join(':'),
-    "ench": item.tooltipParams.enchant|default(''),
-    "pcs": item.tooltipParams.set|default('')|join(':'),
-    "rand": item.tooltipParams.suffix|default(''),
-    "transmog": item.tooltipParams.transmogItem|default(''),
-    "domain": app.locale|split('_')|first
+    'item': item.id,
+    'lvl': character.level,
+    'ilvl': item.itemLevel,
+    'gems': item.tooltipParams.gem0|default(''),
+    'upgd': item.tooltipParams.upgrade.current|default(''),
+    'bonus': item.bonusLists|join(':'),
+    'ench': item.tooltipParams.enchant|default(''),
+    'pcs': item.tooltipParams.set|default('')|join(':'),
+    'rand': item.tooltipParams.suffix|default(''),
+    'transmog': item.tooltipParams.transmogItem|default(''),
+    'domain': app.locale|split('_')|first
 } %}
 <a href="#" rel="{% for type, bonus in rel %}{{ type }}={{ bonus }}{{ loop.last ? "" : ";" }}{% end for %}" class="q{{ item.quality }}">
     <img src="https://render-eu.worldofwarcraft.com/wow/icons/56/{{ item.icon }}.jpg" alt="{{ item.name }}">
