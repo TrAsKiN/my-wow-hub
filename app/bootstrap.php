@@ -37,10 +37,6 @@ if ($app['debug']) {
     $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
         'profiler.cache_dir' => __DIR__ . '/cache/profiler',
     ));
-} else {
-    $app->register(new Silex\Provider\MonologServiceProvider(), array(
-        'monolog.logfile' => __DIR__.'/logs/silex_prod.log',
-    ));
 }
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
