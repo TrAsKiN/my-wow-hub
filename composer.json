@@ -17,5 +17,10 @@
     },
     "autoload": {
         "psr-4": {"MyWoWHub\\": "src/"}
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php -r \"copy('app/config/config.php.dist', 'app/config/config.php');\""
+        ]
     }
 }
