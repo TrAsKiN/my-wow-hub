@@ -6,7 +6,8 @@ use Silex\Application;
 
 class Guild
 {
-    public function show(Application $app, $realm, $guild) {
+    public function show(Application $app, $realm, $guild)
+    {
         $app['curl']->get(API_URL .'/wow/guild/'. rawurlencode($realm) .'/'. rawurlencode($guild), array(
             'apikey' => CLIENT_ID,
             'locale' => LOCALE,
@@ -15,7 +16,11 @@ class Guild
 
         $guildInfo = json_decode(json_encode($app['curl']->response), true);
         foreach ($guildInfo['members'] as $key => $value) {
-            $guildInfo['members'][$key]['character']['inset'] = preg_replace('/(avatar)/', 'inset', $value['character']['thumbnail']);
+            $guildInfo['members'][$key]['character']['inset'] = preg_replace(
+                '/(avatar)/',
+                'inset',
+                $value['character']['thumbnail']
+            );
         }
 
         $name = [];

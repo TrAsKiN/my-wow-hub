@@ -6,7 +6,8 @@ use Silex\Application;
 
 class Character
 {
-    public function show(Application $app, $realm, $character) {
+    public function show(Application $app, $realm, $character)
+    {
         $app['curl']->get(API_URL .'/wow/character/'. rawurlencode($realm) .'/'. rawurlencode($character), array(
             'apikey' => CLIENT_ID,
             'locale' => LOCALE,

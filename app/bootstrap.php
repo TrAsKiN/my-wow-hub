@@ -7,10 +7,10 @@ Symfony\Component\Debug\ErrorHandler::register();
 Symfony\Component\Debug\ExceptionHandler::register();
 
 $curl = new Curl\Curl();
-$curl->setOpt(CURLOPT_CONNECTTIMEOUT,   10);
-$curl->setOpt(CURLOPT_RETURNTRANSFER,   true);
-$curl->setOpt(CURLOPT_HEADER,           false);
-$curl->setOpt(CURLOPT_SSL_VERIFYPEER,   false);
+$curl->setOpt(CURLOPT_CONNECTTIMEOUT, 10);
+$curl->setOpt(CURLOPT_RETURNTRANSFER, true);
+$curl->setOpt(CURLOPT_HEADER, false);
+$curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
 $app['curl'] = $curl;
 
 $app['locale'] = LOCALE;
@@ -18,10 +18,11 @@ $app['locale'] = LOCALE;
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/views',
 ));
-$app['twig'] = $app->extend('twig', function(Twig_Environment $twig, $app) {
+$app['twig'] = $app->extend('twig', function (Twig_Environment $twig, $app) {
     $twig->addExtension(new Cocur\Slugify\Bridge\Twig\SlugifyExtension(Cocur\Slugify\Slugify::create()));
-    if ($app['debug'])
+    if ($app['debug']) {
         $twig->addExtension(new Twig_Extension_Debug());
+    }
     return $twig;
 });
 $app->register(new Silex\Provider\SessionServiceProvider());
@@ -40,8 +41,9 @@ if ($app['debug']) {
 }
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
-    if ($app['debug'])
+    if ($app['debug']) {
         return;
+    }
 
     $templates = array(
         'Exception/'.$code.'.html.twig',

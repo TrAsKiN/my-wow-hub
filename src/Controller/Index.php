@@ -7,7 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Index
 {
-    public function home(Request $request, Application $app) {
+    public function home(Request $request, Application $app)
+    {
         if ($request->cookies->has('access_token')) {
             $app['curl']->get(API_URL .'/wow/user/characters', array(
                 'access_token'  => $request->cookies->get('access_token'),
@@ -49,7 +50,8 @@ class Index
         }
     }
 
-    public function logout(Application $app) {
+    public function logout(Application $app)
+    {
         $app['session']->clear();
 
         $response = $app->redirect($app['url_generator']->generate('home'));

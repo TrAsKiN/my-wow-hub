@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 class Callback
 {
-    public function register(Request $request, Application $app) {
+    public function register(Request $request, Application $app)
+    {
         $app['curl']->post(TOKEN_URL, array(
             'redirect_uri'  => REDIRECT,
             'client_id'     => CLIENT_ID,
