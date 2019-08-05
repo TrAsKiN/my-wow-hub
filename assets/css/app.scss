@@ -1,5 +1,9 @@
 body {
-    background-color: rgba(255, 255, 255, 1);
+    padding-top: 5rem;
+}
+.content {
+    padding: 3rem 1.5rem;
+    text-align: center;
 }
 
 @import "~bootstrap/scss/bootstrap";
