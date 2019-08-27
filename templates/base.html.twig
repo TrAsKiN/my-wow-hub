@@ -25,12 +25,12 @@
                 </div>
             </div>
         </nav>
-
         <main role="main" class="container">
-
             {% block body %}{% endblock %}
-
         </main>
+        <footer class="container">
+            <p class="text-muted text-right"><small>Source files are available on <a href="https://github.com/TrAsKiN/my-wow-hub">GitHub</a>.</small></p>
+        </footer>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
