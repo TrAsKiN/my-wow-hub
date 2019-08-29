@@ -14,8 +14,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(SessionInterface $session)
     {
+        if ($session->has('battletag')) {
+            return $this->redirectToRoute('characters');
+        }
+
         return $this->render('home/index.html.twig', [
             'url' => 'https://'. $_ENV['REGION'] .'.battle.net/oauth/authorize?'. http_build_query([
                 'redirect_uri'  => $this->generateUrl('signin', [], UrlGeneratorInterface::ABSOLUTE_URL),
@@ -58,6 +62,25 @@ class HomeController extends AbstractController
 
         $session->set('battletag', json_decode($userInfoResponse->getContent())->battletag);
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('characters');
+    }
+
+    /**
+     * @Route("/characters", name="characters")
+     */
+    public function characters(SessionInterface $session)
+    {
+        $httpClient = HttpClient::create();
+
+        $charactersResponse = $httpClient->request('GET', 'https://'. $_ENV['REGION'] .'.api.blizzard.com/wow/user/characters', [
+            'auth_bearer'   => $session->get('access_token'),
+            'query' => [
+                'access_token' => $session->get('access_token'),
+            ],
+        ]);
+
+        return $this->render('characters/list.html.twig', [
+            'characters' => json_decode($charactersResponse->getContent())->characters,
+        ]);
     }
 }

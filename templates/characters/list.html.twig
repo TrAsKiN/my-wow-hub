@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Characters - {{ parent() }}{% endblock %}
+
+{% block body %}
+<h1>Characters</h1>
+<p>Here are the characters in your account grouped by realm.</p>
+{{ dump(characters) }}
+{% endblock %}
