@@ -75,12 +75,32 @@ class HomeController extends AbstractController
         $charactersResponse = $httpClient->request('GET', 'https://'. $_ENV['REGION'] .'.api.blizzard.com/wow/user/characters', [
             'auth_bearer'   => $session->get('access_token'),
             'query' => [
-                'access_token' => $session->get('access_token'),
+                'access_token'  => $session->get('access_token'),
+                'locale'        => $_ENV['LOCALE'],
             ],
         ]);
 
+        $characters = json_decode($charactersResponse->getContent())->characters;
+
+        $name = [];
+        $level = [];
+        $guilds = [];
+        foreach ($characters as $key => $value) {
+            $name[$key]     = $value->name;
+            $level[$key]    = $value->level;
+            if (isset($value->guild)) {
+                if (!array_key_exists($value->guild, $guilds)) {
+                    $guilds[$value->guild] = $value->guildRealm;
+                }
+            }
+        }
+
+        array_multisort($level, SORT_DESC, $name, SORT_ASC, $characters);
+
+        $session->set('guilds', $guilds);
+
         return $this->render('characters/list.html.twig', [
-            'characters' => json_decode($charactersResponse->getContent())->characters,
+            'characters' => $characters,
         ]);
     }
 }

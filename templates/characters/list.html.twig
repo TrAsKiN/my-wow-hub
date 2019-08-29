@@ -5,5 +5,21 @@
 {% block body %}
 <h1>Characters</h1>
 <p>Here are the characters in your account grouped by realm.</p>
-{{ dump(characters) }}
+
+{% set oldRealm = {} %}
+{% for realm in characters %}
+{% set actualRealm = realm.realm %}
+{% if actualRealm not in oldRealm %}
+<h2>{{ actualRealm }}</h2>
+<div class="row">
+    {% for character in characters %}
+    {% if character.realm == actualRealm %}
+    {{ dump(character) }}
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+{% set oldRealm = oldRealm|merge([actualRealm]) %}
+{% endfor %}
+
 {% endblock %}
