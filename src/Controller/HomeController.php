@@ -5,8 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\HttpClient\CurlHttpClient;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class HomeController extends AbstractController
 {
@@ -28,21 +29,34 @@ class HomeController extends AbstractController
     /**
      * @Route("/signin", name="signin")
      */
-    public function signin(Request $request)
+    public function signin(Request $request, SessionInterface $session)
     {
-        $httpClient = new CurlHttpClient([
-            'auth_basic'    => [$_ENV['CLIENT_ID'], $_ENV['CLIENT_SECRET']],
-            'headers'       => ['Content-Type' => 'multipart/form-data'],
-        ]);
+        $httpClient = HttpClient::create();
 
-        $response = $httpClient->request('POST', 'https://'. $_ENV['REGION'] .'.battle.net/oauth/token', [
+        $authorizationResponse = $httpClient->request('POST', 'https://'. $_ENV['REGION'] .'.battle.net/oauth/token', [
+            'auth_basic'    => [
+                $_ENV['CLIENT_ID'],
+                $_ENV['CLIENT_SECRET']
+            ],
             'body' => [
-                'redirect_uri'  => $this->generateUrl('home', [], UrlGeneratorInterface::ABSOLUTE_URL),
-                'scope'         => 'wow.profile',
+                'redirect_uri'  => $this->generateUrl('signin', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 'grant_type'    => 'authorization_code',
                 'code'          => $request->query->get('code'),
             ],
         ]);
+
+        $accessToken = json_decode($authorizationResponse->getContent())->access_token;
+
+        $session->set('access_token', $accessToken);
+
+        $userInfoResponse = $httpClient->request('GET', 'https://'. $_ENV['REGION'] .'.battle.net/oauth/userinfo', [
+            'auth_bearer'   => $accessToken,
+            'query' => [
+                'access_token' => $accessToken,
+            ],
+        ]);
+
+        $session->set('battletag', json_decode($userInfoResponse->getContent())->battletag);
 
         return $this->redirectToRoute('home');
     }
