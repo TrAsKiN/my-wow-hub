@@ -18,12 +18,19 @@
 
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home') }}">Home</a>
-                        </li>
                         {% if app.session %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('characters') }}">Characters</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="guilds" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Guilds
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="guilds">
+                                {% for guild in app.session.get('guilds')|keys %}
+                                <a class="dropdown-item" href="#">{{ guild }}</a>
+                                {% endfor %}
+                            </div>
                         </li>
                         {% endif %}
                     </ul>

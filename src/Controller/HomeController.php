@@ -96,8 +96,10 @@ class HomeController extends AbstractController
         }
 
         array_multisort($level, SORT_DESC, $name, SORT_ASC, $characters);
-
+        ksort($guilds);
         $session->set('guilds', $guilds);
+
+        dump($characters);
 
         return $this->render('characters/list.html.twig', [
             'characters' => $characters,

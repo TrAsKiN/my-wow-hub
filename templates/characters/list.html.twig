@@ -11,10 +11,13 @@
 {% set actualRealm = realm.realm %}
 {% if actualRealm not in oldRealm %}
 <h2>{{ actualRealm }}</h2>
-<div class="row">
+<div class="row align-items-center">
     {% for character in characters %}
     {% if character.realm == actualRealm %}
-    {{ dump(character) }}
+    <div class="col-3 py-3">
+        <img src="http://render-eu.worldofwarcraft.com/character/{{ character.thumbnail|replace({'avatar': "inset"}) }}?alt=/wow/static/images/2d/avatar/{{ character.race }}-{{ character.gender }}.jpg" class="img-fluid rounded mx-auto d-block" alt="{{ character.name }}">
+        {#{ dump(character) }#}
+    </div>
     {% endif %}
     {% endfor %}
 </div>
