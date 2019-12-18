@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="content jumbotron mb-0">
+    <h1 class="display-3">Hey! Welcome to you!</h1>
+    <p class="lead">By logging in with your <strong>Battle.net</strong> account, you will have access to the list of all your characters (all realms combined)!</p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="{{ url }}" role="button">Sign in with Battle.net</a><br>
+        <small class="text-muted"><em>By clicking on the link, you will be redirected to the <strong>Battle.net</strong> site where you can authorize the application and you agree that we may use cookies for authentication.</em></small>
+    </p>
+</div>
+{% endblock %}

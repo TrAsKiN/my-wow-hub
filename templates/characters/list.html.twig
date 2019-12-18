@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Characters - {{ parent() }}{% endblock %}
+
+{% block body %}
+<h1>Characters</h1>
+<p>Here are the characters in your account grouped by realm.</p>
+
+{% set oldRealm = {} %}
+{% for realm in characters %}
+{% set actualRealm = realm.realm %}
+{% if actualRealm not in oldRealm %}
+<h2>{{ actualRealm }}</h2>
+<div class="row align-items-center">
+    {% for character in characters %}
+    {% if character.realm == actualRealm %}
+    <div class="col-2 py-3">
+        <img src="http://render-eu.worldofwarcraft.com/character/{{ character.thumbnail }}?alt=/wow/static/images/2d/avatar/{{ character.race }}-{{ character.gender }}.jpg" class="img-fluid rounded mx-auto d-block img-thumbnail" alt="{{ character.name }}"  data-toggle="tooltip" data-placement="right" data-html="true" title="<strong>{{ character.name }}</strong><br>Level: {{ character.level }}<br>{{ character.guild|default('') }}">
+        {#{ dump(character) }#}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+{% set oldRealm = oldRealm|merge([actualRealm]) %}
+{% endfor %}
+
+{% endblock %}

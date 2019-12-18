@@ -1,7 +1,0 @@
-<IfModule rewrite_module>
-    RewriteEngine On
-    RewriteBase /my-wow-hub
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [QSA,L]
-</IfModule>

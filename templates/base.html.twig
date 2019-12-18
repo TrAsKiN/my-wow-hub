@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}My WoW Hub{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{{ path('home') }}">My WoW Hub</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto">
+                        {% if app.session.get('battletag') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('characters') }}">Characters</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="guilds" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Guilds
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="guilds">
+                                {% for guild in app.session.get('guilds')|keys %}
+                                <a class="dropdown-item" href="#">{{ guild }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% if app.session %}
+                    <span class="navbar-text">
+                        {{ app.session.get('battletag') }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <main role="main" class="container">
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="container">
+            <p class="text-muted text-right"><small>Source files are available on <a href="https://github.com/TrAsKiN/my-wow-hub">GitHub</a>.</small></p>
+        </footer>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>
