@@ -6,7 +6,6 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
     .setOutputPath('public/build/')
-    .setPublicPath('/build')
     .addEntry('app', './assets/js/app.js')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
@@ -21,5 +20,11 @@ Encore
     .enableSassLoader()
     .autoProvidejQuery()
 ;
+
+if (Encore.isProduction()) {
+    Encore.setPublicPath('/my-wow-hub/build');
+} else {
+    Encore.setPublicPath('/build');
+}
 
 module.exports = Encore.getWebpackConfig();
