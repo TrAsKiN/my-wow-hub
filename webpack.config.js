@@ -4,6 +4,12 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
+if (Encore.isProduction()) {
+    Encore.setPublicPath('/my-wow-hub/build');
+} else {
+    Encore.setPublicPath('/build');
+}
+
 Encore
     .setOutputPath('public/build/')
     .addEntry('app', './assets/js/app.js')
@@ -20,11 +26,5 @@ Encore
     .enableSassLoader()
     .autoProvidejQuery()
 ;
-
-if (Encore.isProduction()) {
-    Encore.setPublicPath('/my-wow-hub/build');
-} else {
-    Encore.setPublicPath('/build');
-}
 
 module.exports = Encore.getWebpackConfig();
