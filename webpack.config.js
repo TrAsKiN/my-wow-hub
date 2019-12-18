@@ -5,7 +5,10 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 if (Encore.isProduction()) {
-    Encore.setPublicPath('/my-wow-hub/build');
+    Encore
+        .setPublicPath('/my-wow-hub/build')
+        .setManifestKeyPrefix('build')
+    ;
 } else {
     Encore.setPublicPath('/build');
 }
