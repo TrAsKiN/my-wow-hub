@@ -46,6 +46,7 @@ class HomeController extends AbstractController
                 'redirect_uri'  => $this->generateUrl('signin', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 'grant_type'    => 'authorization_code',
                 'code'          => $request->query->get('code'),
+                'scope'         => 'wow.profile'
             ],
         ]);
 
@@ -74,9 +75,12 @@ class HomeController extends AbstractController
 
         $charactersResponse = $httpClient->request('GET', 'https://'. $_ENV['REGION'] .'.api.blizzard.com/wow/user/characters', [
             'auth_bearer'   => $session->get('access_token'),
+            'headers' => [
+                'Battlenet-Namespace' => 'profile-'. $_ENV['REGION']
+            ],
             'query' => [
-                'access_token'  => $session->get('access_token'),
                 'locale'        => $_ENV['LOCALE'],
+                'region'        => $_ENV['REGION']
             ],
         ]);
 
