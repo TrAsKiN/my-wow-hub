@@ -103,8 +103,6 @@ class HomeController extends AbstractController
         ksort($guilds);
         $session->set('guilds', $guilds);
 
-        dump($characters);
-
         return $this->render('characters/list.html.twig', [
             'characters' => $characters,
         ]);
