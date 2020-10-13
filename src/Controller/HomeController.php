@@ -84,7 +84,7 @@ class HomeController extends AbstractController
             ],
         ]);
 
-        if (json_decode($charactersResponse)->getStatusCode() == 403)
+        if ($charactersResponse->getStatusCode() == 403)
             return $this->render('characters/forbidden.html.twig');
 
         $characters = array_shift(json_decode($charactersResponse->getContent())->wow_accounts)->characters;
