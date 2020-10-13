@@ -73,7 +73,7 @@ class HomeController extends AbstractController
     {
         $httpClient = HttpClient::create();
 
-        $charactersResponse = $httpClient->request('GET', 'https://'. $_ENV['REGION'] .'.api.blizzard.com/wow/user/characters', [
+        $charactersResponse = $httpClient->request('GET', 'https://'. $_ENV['REGION'] .'.api.blizzard.com/profile/user/wow', [
             'auth_bearer'   => $session->get('access_token'),
             'headers' => [
                 'Battlenet-Namespace' => 'profile-'. $_ENV['REGION']
@@ -84,7 +84,10 @@ class HomeController extends AbstractController
             ],
         ]);
 
-        $characters = json_decode($charactersResponse->getContent())->characters;
+        if (json_decode($charactersResponse)->getStatusCode() == 403)
+            return $this->render('characters/forbidden.html.twig');
+
+        $characters = array_shift(json_decode($charactersResponse->getContent())->wow_accounts)->characters;
 
         $name = [];
         $level = [];
