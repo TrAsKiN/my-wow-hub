@@ -41,7 +41,7 @@ class CharacterRenderExtension extends AbstractExtension
             ],
         ]);
 
-        if ($characterMediaResponse->getStatusCode() != 200) return 'https://render-us.worldofwarcraft.com/character/'. $name .'/00/000000000-avatar.jpg?alt=/shadow/avatar/'. $raceId .'-'. $genderId .'.jpg';
+        if ($characterMediaResponse->getStatusCode() != 200) return 'https://render-'. $_ENV['REGION'] .'.worldofwarcraft.com/character/'. $name .'/00/000000000-avatar.jpg?alt=/shadow/avatar/'. $raceId .'-'. $genderId .'.jpg';
 
         $characterMedia = json_decode($characterMediaResponse->getContent());
 
