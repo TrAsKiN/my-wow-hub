@@ -150,6 +150,9 @@
     "symfony/dependency-injection": {
         "version": "v4.3.11"
     },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/dom-crawler": {
         "version": "v4.3.11"
     },
